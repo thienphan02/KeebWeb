@@ -1,0 +1,1060 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  font-family: 'Roboto', sans-serif;
+  background-color: #fefae0; 
+  color: #283618; 
+  height: 100%;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  height: 100vh;
+  scroll-snap-type: y mandatory; /* Snap scrolling on y-axis */
+  box-sizing: border-box;
+}
+
+#main-home {
+   overflow-y: scroll; /* Scrolling for main container */
+}
+
+/* Scroll sections */
+.scroll-section {
+  scroll-snap-align: start; /* Snap to the start of each section */
+  height: 100vh; /* Each section takes full viewport height */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+}
+
+.scroll-active {
+  opacity: 1;
+}
+
+#home, #keyboard, #switch, #keycap {
+  color: white; 
+  animation: scaleFadeIn 1.5s ease forwards;
+}
+
+#home, #keyboard, #switch, #keycap .h2 {
+  font-size: 2.5em;
+}
+
+#home, #keyboard, #switch, #keycap .p {
+  font-size: 1.25em;
+  line-height: 1.6;
+}
+
+@keyframes scaleFadeIn {
+  0% {
+    opacity: 0; /* Start invisible */
+    transform: scale(0.5); /* Start smaller */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+    transform: scale(1); /* End at normal size */
+  }
+}
+
+#home {
+  background-color: #606c38; 
+}
+
+#keyboard {
+  background-color: #283618; 
+}
+
+#switch {
+  background-color: #A06522; 
+}
+
+#keycap {
+  background-color: #764A19; 
+}
+
+/* Carousel container */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 1em auto;
+  height: 40vh;
+}
+
+.carousel {
+  display: flex;
+  overflow: hidden;
+  height: 120%;
+}
+
+.carousel-image {
+  width: 100%;
+  object-fit: cover;
+  max-height: 100%;
+  transition: transform 0.5s ease-in-out;
+  flex-shrink: 0;
+  display: none;
+}
+
+.carousel-image.active {
+  display: block;
+}
+
+/* Arrows */
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fefae0; 
+  font-size: 2em;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dots */
+.carousel-dots {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #fefae0; 
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.dot.active {
+  opacity: 1;
+  background-color: #dda15e; 
+}
+
+/* Header */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #283618; 
+  padding: 0.5em;
+  color: #fefae0; 
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+header nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+header nav ul li a, header nav button {
+  color: #fefae0; 
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 1em;
+}
+
+header nav button {
+  color: #fefae0; 
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Footer */
+footer {
+  background-color: #283618; 
+  color: #fefae0; 
+  text-align: center;
+  padding: 0.5em;
+  position:absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+footer a{
+  color: #fefae0;
+}
+
+footer p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+/* Styling for main choices */
+#main-choices {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-choice {
+  cursor: pointer;
+  background-color: #fefae0; 
+  padding: 20px 40px;
+  margin: 10px;
+  border: 1px solid #bc6c25; 
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  text-align: center;
+  max-width: 250px;
+}
+
+.main-choice:hover {
+  background-color: #dda15e; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+}
+
+.choice-details-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Back button container */
+.back-button-container {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 15px;
+}
+
+/* Back button styling */
+.back-link {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #606c38;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #dda15e;
+}
+
+/* Sub-choices */
+#sub-choices {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.sub-choice {
+  display: none;
+  text-align: center;
+  padding: 1em;
+  border-radius: 8px;
+  background-color: #dda15e; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sub-choice items */
+.sub-choice-item {
+  background-color: #fefae0;
+  padding: 1em;
+  border: 1px solid #bc6c25;
+  border-radius: 8px;
+  cursor: pointer;
+  max-width: 300px;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.sub-choice-item:hover {
+  background-color: #dda15e; 
+  border-color: #606c38; 
+}
+
+#details-container {
+  margin: 20px auto;
+  padding: 40px;
+  max-width: 100%; /* Ensure it takes up most of the space */
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Responsive grid */
+  gap: 20px;
+  background-color: #fefae0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-bottom: 5em;
+}
+
+/* Image styling */
+#details-container img {
+  grid-column: span 2; /* Span across all columns */
+  display: block;
+  object-fit: cover;
+  margin: 10px auto;
+  width: 60%; /* Adjust width for larger screens */
+  max-height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+#details-container h2 {
+  grid-column: span 2; /* Center across all columns */
+  font-size: 2.5em;
+  color: #bc6c25;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Detail blocks */
+#details-container div {
+  margin-bottom: 2em;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  text-align: left;
+}
+
+/* Sub-headings */
+#details-container h3 {
+  font-size: 1.8em;
+  color: #bc6c25;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* Paragraphs */
+#details-container p {
+  color: #606c38;
+  font-size: 1.2em;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0px;
+}
+
+/* General styles for the collage */
+.collage {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 10px;
+  padding: 1em;
+  background-color: #fefae0; 
+  padding-bottom: 5em;
+}
+
+.collage-item {
+  background-color: #fefae0; 
+  padding: 2em;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  text-align: center;
+  color: #283618;
+}
+
+.collage-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.collage-item h3 {
+  margin-top: 1em;
+  font-size: 1.5em;
+  color: #bc6c25; 
+  font-weight: bold;
+}
+
+.collage-item p {
+  color: #606c38; 
+  font-size: 1.1em;
+  margin-top: 0.75em;
+  line-height: 1.6;
+}
+
+.collage-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #dda15e;
+}
+
+.collage-item:active {
+  opacity: 0.8; /* Slightly dim the item when pressed */
+}
+
+.collage-item img:hover {
+  transform: scale(1.05);
+}
+
+.collage-item h3,
+.collage-item p {
+  transition: color 0.3s;
+}
+
+.collage-item:hover h3 {
+  color: #bc6c25;
+}
+
+.collage-item:hover p {
+  color: #283618; 
+}
+
+/* Section Styles */
+.mod-section {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fefae0; 
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Heading Styles */
+.mod-section h2 {
+  color: #bc6c25; 
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Card Styles */
+.mod-card {
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #fefae0; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
+  position: relative;
+}
+
+/* Card Hover Effect */
+.mod-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.mod-card:focus {
+  outline: 3px solid #bc6c25;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styles in Cards */
+.mod-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+/* Image Hover Effect */
+.mod-card img:hover {
+  transform: scale(1.05);
+}
+
+/* Heading and List Styles in Cards */
+.mod-card h3 {
+  color: #bc6c25; 
+  margin-top: 0;
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+/* Underline Effect for Card Headings */
+.mod-card h3::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: #bc6c25; 
+  width: 50%;
+  margin-top: 5px;
+}
+
+/* Paragraph and List Styles */
+.mod-card p {
+  color: #606c38; 
+  margin: 15px 0;
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+.mod-card ul,
+.mod-card ol {
+  margin-left: 20px;
+  color: #606c38;
+  line-height: 1.6;
+}
+
+.mod-card li {
+  font-size: 1.1em;
+  margin-top: 0.75em;
+  line-height: 1.6;
+}
+
+.mod-card strong {
+  color: #283618; 
+  font-weight: bold;
+}
+
+#notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 300px;
+}
+
+.notification {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.notification.show {
+  opacity: 1;
+}
+
+#change-password-form {
+  max-width: 400px; 
+  margin: 20px auto; /* Center the form horizontally */
+  padding: 20px; 
+  border-radius: 8px; 
+  background-color: #fefae0; 
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+#change-password-form h3 {
+  text-align: center; 
+  margin-bottom: 20px; 
+  color: #7B4718;
+}
+
+#change-password-form label {
+  display: block; 
+  margin-bottom: 8px; 
+  font-weight: bold; 
+  color: #7B4718;
+}
+
+#change-password-form input[type="password"] {
+  width: 95%; 
+  padding: 10px; 
+  margin-bottom: 20px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  font-size: 16px; 
+}
+
+#change-password-form button[type="submit"] {
+  width: 100%; 
+  padding: 10px; 
+  background-color: #7B4718; 
+  color: white; 
+  border: none; 
+  border-radius: 4px; 
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#change-password-form button[type="submit"]:hover {
+  background-color: #9f5c21;
+}
+
+/* General page styling */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #bc6c25, #606c38);
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.login-page form {
+  background: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+}
+
+.login-page h3 {
+  text-align: center;
+  color: #444;
+}
+
+.login-page input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.login-page button {
+  width: 100%;
+  padding: 12px;
+  background-color: #053CF0;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-page button:hover {
+  background-color: #a777e3;
+}
+
+/* Login/Signup toggle animation */
+#login-form, #signup-form {
+  opacity: 0;
+  top: 50%;
+  transform: translateY(-50%) scale(0.95);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  z-index: -1;
+}
+
+#login-form.active, #signup-form.active {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+  z-index: 1;
+}
+
+/* Toggle buttons */
+.toggle-link {
+  display: block;
+  margin: 20px 0;
+  text-align: center;
+  color: #053CF0;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.toggle-link:hover {
+  color: #a777e3;
+}
+
+/* Additional transition effects */
+.login-page .fade-in {
+  animation: fadeInEFF 0.6s ease-in-out;
+}
+
+@keyframes fadeInEFF {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Slide-in Animation */
+@keyframes slideIn {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Mobile devices (up to 600px) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 14px; 
+  }
+  .scroll-section .h2 {
+    font-size: 1.8em;
+  }
+  .scroll-section .p {
+    font-size: 1em;
+  }
+  .carousel-container {
+    max-width: 100%; 
+    height: 30vh;
+  }
+  .prev, .next {
+    font-size: 1.5em;
+    padding: 8px;
+  }
+
+  .main-choice {
+    padding: 10px 20px;
+    max-width: 200px; 
+  }
+
+  .sub-choice-item {
+    width: 50%; /* Make items stack in smaller screens */
+    max-width: 100%;
+  }
+
+  #details-container {
+    display: block;
+    padding: 15px; 
+    max-width: 100%; 
+    padding-bottom: 5em;
+  }
+
+  #details-container img {
+    width: 80%; 
+    max-height: 200px; 
+  }
+
+  #details-container h2 {
+    font-size: 1.8em;
+  }
+
+  #details-container div {
+    padding: 10px; 
+  }
+
+  #details-container h3 {
+    font-size: 1.5em;
+  }
+
+  #details-container p {
+    font-size: 1em; 
+  }
+
+  .collage {
+    grid-template-columns: repeat(2, 1fr); /* Reduce to 2 columns for mobile */
+  }
+
+  .collage-item {
+    padding: 0.75em; 
+    padding-bottom: 3em;
+  }
+
+  .collage-item h3 {
+    font-size: 1.2em; 
+  }
+
+  .collage-item p {
+    font-size: 0.95em;
+  }
+
+  .mod-section {
+    padding: 15px;
+    padding-bottom: 5em;
+  }
+
+  .mod-section h2 {
+    font-size: 1.8em;
+  }
+
+  .mod-card h3 {
+    font-size: 1.3em;
+  }
+
+  .mod-card p,
+  .mod-card li {
+    font-size: 0.9em;
+  }
+  .login-page {
+    padding: 20px; /* Add some padding for smaller screens */
+  }
+
+  .login-page form {
+    width: 90%; /* Form takes up more width on smaller screens */
+    padding: 20px; /* Reduce padding for mobile */
+  }
+
+  #change-password-form {
+    max-width: 90%; /* Adjust form width for mobile */
+  }
+
+  #change-password-form input[type="password"], 
+  #change-password-form button[type="submit"] {
+    font-size: 14px; /* Slightly smaller text size for mobile */
+  }
+
+  .login-page h3 {
+    font-size: 18px; /* Adjust heading size */
+  }
+
+  .login-page input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .login-page button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  header nav ul {
+    display: none; /* Hide the navigation menu initially */
+    flex-direction: column; /* Stack items vertically */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: #283618; /* Same as header background */
+  }
+
+  header nav ul li {
+    text-align: center;
+    padding: 1em;
+  }
+
+  #nav-toggle {
+    display: block; /* Show the hamburger menu */
+    font-size: 1.5em;
+    background: none;
+    border: none;
+    color: #fefae0;
+    cursor: pointer;
+  }
+
+  header nav.active ul {
+    display: flex; /* Show the menu when active */
+  }
+
+}
+
+/* Tablets and medium screens (601px - 1024px) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  body {
+    font-size: 16px; 
+  }
+  .scroll-section .h2 {
+    font-size: 2.2em;
+  }
+  .scroll-section .p {
+    font-size: 1.15em;
+  }
+  .carousel-container {
+    max-width: 90%; 
+    height: 35vh;
+  }
+  .prev, .next {
+    font-size: 1.8em;
+    padding: 10px;
+  }
+
+  .main-choice {
+    padding: 8px 16px; 
+  }
+
+  .sub-choice-item {
+    padding: 0.5em;
+    margin: 5px;
+    width: 60%;
+    max-width: 100%;
+  }
+
+  #details-container img {
+    width: 60%; 
+    max-height: 250px; 
+  }
+
+  #details-container h2 {
+    font-size: 2em; 
+  }
+
+  #details-container div {
+    padding: 15px; 
+  }
+
+  #details-container h3 {
+    font-size: 1.6em; 
+  }
+
+  #details-container p {
+    font-size: 1.1em; 
+  }
+
+  .collage {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  .collage-item {
+    padding: 1em;
+  }
+
+  .collage-item h3 {
+    font-size: 1.3em; 
+  }
+
+  .collage-item p {
+    font-size: 1em; 
+  }
+
+  .mod-section {
+    max-width: 90%;
+    padding: 20px;
+    padding-bottom: 3em;
+  }
+
+  .mod-section h2 {
+    font-size: 2em;
+  }
+
+  .mod-card h3 {
+    font-size: 1.5em;
+  }
+
+  .mod-card p,
+  .mod-card li {
+    font-size: 1em;
+  }
+
+  .login-page form {
+    width: 80%; /* Slightly wider for tablet devices */
+    padding: 30px; /* Moderate padding for tablets */
+  }
+
+  #change-password-form {
+    max-width: 80%; /* Adjust width for tablets */
+  }
+
+  #change-password-form input[type="password"], 
+  #change-password-form button[type="submit"] {
+    font-size: 15px; /* Slightly larger text size for tablets */
+  }
+
+  .login-page h3 {
+    font-size: 20px; /* Adjust heading size */
+  }
+
+  .login-page input {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .login-page button {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  header nav ul {
+    gap: 10px; /* Reduce gap between navigation items */
+  }
+
+  header h1 {
+    font-size: 1.2em; /* Slightly reduce heading size */
+  }
+
+  header nav ul li a, header nav button {
+    font-size: 0.9em; /* Reduce text size in navigation */
+  }
+
+  #nav-toggle {
+    display: none;
+  }
+}
+
+/* Large desktop screens (1025px and above) */
+@media only screen and (min-width: 1025px) {
+  body {
+    font-size: 18px; 
+  }
+  .scroll-section .h2 {
+    font-size: 2.5em;
+  }
+  .scroll-section .p {
+    font-size: 1.25em;
+  }
+  .carousel-container {
+    max-width: 80%; /* Keep carousel narrower */
+    height: 40vh;
+  }
+  .prev, .next {
+    font-size: 2em;
+    padding: 12px;
+  }
+
+  #nav-toggle {
+    display: none;
+  }
+}
